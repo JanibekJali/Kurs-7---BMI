@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomWidget extends StatelessWidget {
   final Widget widgetChild;
-  const CustomWidget({
-    this.widgetChild,
-  });
+  final Color color;
+  const CustomWidget({this.widgetChild, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        decoration: const BoxDecoration(
-            color: Color(0xff393B4B),
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+        decoration: BoxDecoration(
+            color: color ?? const Color(0xff393B4B),
+            borderRadius: const BorderRadius.all(Radius.circular(15))),
         child: widgetChild,
       ),
     );
