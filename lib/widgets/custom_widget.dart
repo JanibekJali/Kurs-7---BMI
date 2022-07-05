@@ -12,7 +12,7 @@ class CustomWidget extends StatelessWidget {
         decoration: BoxDecoration(
             color: color ?? const Color(0xff393B4B),
             borderRadius: const BorderRadius.all(Radius.circular(15))),
-        child: widgetChild,
+        child: widgetChild ?? Text('Empty'),
       ),
     );
   }

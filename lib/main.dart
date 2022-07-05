@@ -1,7 +1,10 @@
+import 'package:bmi_calculator/bmi_brain.dart';
+import 'package:bmi_calculator/second_screen.dart';
 import 'package:bmi_calculator/widgets/gender_widget.dart';
 import 'package:bmi_calculator/widgets/weight_age_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'widgets/calcualtion_widget.dart';
 import 'widgets/custom_widget.dart';
 
 enum Gender {
@@ -10,12 +13,7 @@ enum Gender {
   NONE,
 }
 
-enum Toyota {
-  Camry,
-  RAV4,
-  HIGHLANDER,
-  None
-}
+enum Toyota { Camry, RAV4, HIGHLANDER, None }
 
 Toyota mashina = Toyota.RAV4;
 
@@ -49,7 +47,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   double heightValue = 160;
-  int weight = 60;
+  int _weight = 60;
   Color selectedColor = const Color(0xff103B4B);
   Color unselectedColor = const Color(0xff393B4B);
   int age = 19;
@@ -168,15 +166,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: WeightAgeWidget(
                         text: 'Weight',
-                        numberText: weight.toString(),
+                        numberText: _weight.toString(),
                         onpressedMinus: () {
                           setState(() {
-                            weight--;
+                            _weight--;
                           });
                         },
                         onpressedPlus: () {
                           setState(() {
-                            weight++;
+                            _weight++;
                           });
                         },
                       ),
@@ -210,19 +208,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        child: Text(
-          'Эсепте',
-          style: TextStyle(fontSize: 35.0),
-        ),
-        color: Colors.pink,
-        height: MediaQuery.of(context).size.height * 0.1,
-        width: double.infinity,
-        alignment: Alignment.center,
+      bottomNavigationBar: CalculationWidget(
+        text: 'эсепте',
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SecondScreen(
+                        bmiResultat: BmiBrain.calculateBmi(
+                          weight: _weight,
+                          height: heightValue.toInt(),
+                        ),
+                      )));
+        },
       ),
     );
   }
 }
+
 //Turnary operator =>
 //  maleColor ? selectedColor : unselectedColor,
 // kadimki shart
