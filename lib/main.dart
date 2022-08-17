@@ -47,7 +47,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   double heightValue = 160;
-  int _weight = 60;
+  int _weight = 6000;
   Color selectedColor = const Color(0xff103B4B);
   Color unselectedColor = const Color(0xff393B4B);
   int age = 19;
