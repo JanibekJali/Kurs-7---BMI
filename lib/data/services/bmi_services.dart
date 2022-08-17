@@ -1,8 +1,6 @@
 import 'dart:math' as math;
 
-class BmiBrain {
-  //  _bmi = _weight / math.pow(_height / 100, 2);
-  // weight (lb) / [height (in)]2 x 703
+class BmiService {
   static double calculateBmi({int weight, int height}) {
     final bmi = weight / math.pow(height / 100, 2);
 
