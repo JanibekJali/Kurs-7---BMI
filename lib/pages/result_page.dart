@@ -28,7 +28,7 @@ class SecondScreen extends StatelessWidget {
                 padding:
                     EdgeInsets.symmetric(vertical: mediaQuery.height * 0.03),
                 child: SizedBox(
-                  height: mediaQuery.height * 0.7,
+                  height: mediaQuery.height * 0.69,
                   width: mediaQuery.width * 0.9,
                   child: CustomWidget(
                       widgetChild: Column(
