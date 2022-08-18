@@ -1,11 +1,14 @@
-import 'package:bmi_calculator/data/repos/bmi_repo.dart';
+import 'package:bmi_calculator/controllers/bmi_result_controller.dart';
 import 'package:bmi_calculator/widgets/buttons/calcualtion_widget.dart';
 import 'package:bmi_calculator/widgets/mainWidget/custom_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SecondScreen extends StatelessWidget {
-  final double bmiResultat;
-  const SecondScreen({this.bmiResultat, Key key}) : super(key: key);
+  final BmiResultController bmiResultController =
+      Get.put<BmiResultController>(BmiResultController());
+
+  SecondScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +38,21 @@ class SecondScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        BmiRepo.getResult(bmiResultat),
+                        bmiResultController.title.value,
                         style: const TextStyle(
                           fontSize: 30,
                           color: Colors.green,
                         ),
                       ),
                       Text(
-                        bmiResultat.toStringAsFixed(1),
+                        bmiResultController.result.value.toStringAsFixed(1),
                         style: const TextStyle(
                           fontSize: 70,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        BmiRepo.getInterpretation(bmiResultat),
+                        bmiResultController.description.value,
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
